@@ -13,6 +13,7 @@ class Product{
     static draw(product){
         return `<div class="col" id="${product.sku}">
         <div class="card bg-light" style="width: 18rem;">
+        <div><h5>SKU:${product.sku}</h5></div>
             <img class="w-75 h-75 p-2 rounded mx-auto border-0" src="${product.blob_image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${product.name}</h5>
@@ -21,10 +22,10 @@ class Product{
               <h5 class="card-text">Estoque: ${product.quantity}</h5>
               <div class="row">
                 <div class="col w-100">
-                    <i class="bi bi-plus-circle btn btn-danger w-100"></i>
+                    <i class="bi bi-dash-circle btn btn-danger w-100"></i>
                 </div>
                 <div class="col w-100">
-                    <i class="bi bi-dash-circle btn btn-success w-100"></i>
+                    <i class="bi bi-plus-circle btn btn-success w-100"></i>
                 </div>
               </div>
             </div>

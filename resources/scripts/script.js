@@ -3,16 +3,18 @@ const searchInput = document.getElementById('search-input');
 
 const storageName = 'products';
 
-drawProducts()
+drawProducts(StorageController.getAll(storageName))
 
-function drawProducts(){
-    listOfProducts.innerHTML = '';
-    StorageController.getAll(storageName).forEach(product => {
+function drawProducts(list){
+    listOfProducts.innerHTML = "";
+    list.forEach(product => {
         listOfProducts.innerHTML += Product.draw(product);
     });
 }
 
 searchInput.addEventListener('keyup', () => {
-    //logic of search
-    
+    if(searchInput.value == "")
+        drawProducts(StorageController.getAll(storageName))
+    else
+        drawProducts(Search.findProducts(storageName,searchInput.value));
 });

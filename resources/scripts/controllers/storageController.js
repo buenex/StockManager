@@ -5,7 +5,11 @@ class StorageController{
     }
     static getBySku(storageName,sku){
         let obj = this.getAll(storageName);
-        return obj.find((p) => p.sku == sku);
+        return obj.find((p) => p.sku === sku);
+    }
+    static getBySkuTerm(storageName,sku){
+        let obj = this.getAll(storageName);
+        return obj.filter((p) => p.sku.toString().toLowerCase().includes(sku.toString().toLowerCase()));
     }
     static getByName(storageName,name){
         let obj = this.getAll(storageName);

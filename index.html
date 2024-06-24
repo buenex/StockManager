@@ -15,20 +15,20 @@
 
     <body>
         <div class="container text-center">
-            <nav class="navbar navbar-light bg-light p-3">
+            <nav class="navbar navbar-light fixed-top bg-light p-2">
                 <div class="btn-group w-100" role="group">
-                    <button type="button" class="btn btn-outline-primary active"><i class="bi bi-bag-plus"></i></button>
-                    <button type="button" class="btn btn-outline-primary"><i class="bi bi-card-checklist" width="32"
-                            height="32"></i></button> 
-                    <button type="button" class="btn btn-outline-primary"><i class="bi bi-gear-fill" width="32"
-                            height="32"></i></button>
+                    <a href="#" class="btn btn-outline-primary active"><i class="bi bi-bag-plus"></i></a>
+                    <a href="./pages/cadastro_produto.html" class="btn btn-outline-primary"><i class="bi bi-card-checklist" width="32"
+                            height="32"></i></a> 
+                    <a href="./pages/relatorio_produtos.html" class="btn btn-outline-primary" ><i class="bi bi-gear-fill" width="32"
+                            height="32"></i></a>
                 </div>
                 <form class="form-inline my-2 my-lg-0 w-100">
                     <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 </form>
             </nav>
         </div>
-        <div class="container text-center w-100 mt-3">
+        <div class="container text-center w-100 mt-5 pt-5">
             <div class="row" id="list-of-products">
                 
             </div>
@@ -38,5 +38,6 @@
         <script src="resources/scripts/models/product.js"></script>
         <script src="./resources/scripts/controllers/storageController.js"></script>
         <script src="./resources/scripts/script.js"></script>
+        <script src="./resources\scripts\utils\search.js"></script>
     </footer>
 </html>

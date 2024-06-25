@@ -1,5 +1,5 @@
-var storageName  = "teste";
-StorageController.deleteAll(storageName);
+var storageNameTest  = "teste";
+StorageController.deleteAll(storageNameTest);
     
 var obj1 = {sku:1234,name:"name teste",  description:"description teste"};
 var obj2 = {sku:2345,name:"name teste 2",description:"description teste 2 cont"};
@@ -13,31 +13,31 @@ getObjectsByContainsATerm();
 deleteObject();
 
 function insertObjects(){
-    StorageController.save(storageName,obj1);
-    StorageController.save(storageName,obj2);
-    StorageController.save(storageName,obj3);
-    console.log(StorageController.getAll(storageName));
+    StorageController.save(storageNameTest,obj1);
+    StorageController.save(storageNameTest,obj2);
+    StorageController.save(storageNameTest,obj3);
+    console.log(StorageController.getAll(storageNameTest));
 }
 
 function insertObjectThatAlreadyExists(){
-    let result = StorageController.save(storageName,obj1);
+    let result = StorageController.save(storageNameTest,obj1);
     console.log(result);
 }
 
 function updateObject(){
     obj1.name = "name altered";
-    StorageController.update(storageName,obj1);
-    console.log(StorageController.getAll(storageName));
+    StorageController.update(storageNameTest,obj1);
+    console.log(StorageController.getAll(storageNameTest));
 }
 function getObjectBySku(){
-    console.log(StorageController.getBySku(storageName,obj1.sku));
+    console.log(StorageController.getBySku(storageNameTest,obj1.sku));
 }
 
 function getObjectsByContainsATerm(){
-    console.log(StorageController.getByName(storageName,"altered"));
-    console.log(StorageController.getByDescription(storageName,"cont"));
+    console.log(StorageController.getByName(storageNameTest,"altered"));
+    console.log(StorageController.getByDescription(storageNameTest,"cont"));
 }
 function deleteObject(){
-    StorageController.deleteBySku(storageName,obj1.sku);
-    console.log(StorageController.getAll(storageName));
+    StorageController.deleteBySku(storageNameTest,obj1.sku);
+    console.log(StorageController.getAll(storageNameTest));
 }

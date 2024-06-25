@@ -1,10 +1,11 @@
 class Product{
-    constructor(sku,name,description,quantity,blob_image,coast_price,sell_price){
+    constructor(sku,name,description,quantity,blob_image,binary_image,coast_price,sell_price){
         this.sku = sku;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.blob_image = blob_image;
+        this.binary_image = binary_image;
         this.coast_price = coast_price;
         this.sell_price = sell_price;
         this.margin_price = sell_price - coast_price;
@@ -14,11 +15,11 @@ class Product{
         return `<div class="col" id="${product.sku}">
         <div class="card bg-light" style="width: 18rem;">
         <div><h5>SKU:${product.sku}</h5></div>
-            <img class="w-75 h-75 p-2 rounded mx-auto border-0" src="${product.blob_image}" alt="Card image cap">
+            <img class="w-75 h-75 p-2 rounded mx-auto border-0" src="${product.binary_image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${product.name}</h5>
               <p class="card-text">${product.description}.</p>
-              <h5 class="card-text">R$ ${product.sell_price}</53>
+              <h5 class="card-text">R$ ${product.sell_price}</h5>
               <h5 class="card-text">Estoque: ${product.quantity}</h5>
               <div class="row">
                 <div class="col w-100">

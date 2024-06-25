@@ -1,43 +1,46 @@
-//Encode a file to Base64
-function fileToDataUrl(file, callback) {
-    const reader = new FileReader();
-    reader.onload = function() {
-        const base64String = reader.result;
-        callback(base64String);
-    }
-    reader.readAsDataURL(file);
-}
 
-//Decode a Base64 string to File
-function dataUrlToFile(name,dataurl){
-    var content = atob(getBinaryFile(dataurl));
-    var byteArr = new Array(content.length);
-
-    for (var i = 0; i < content.length; i++) {
-      byteArr[i] = content.charCodeAt(i);
+class Utils {
+    //Encode a file to Base64
+    static fileToDataUrl(file, callback) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const base64String = reader.result;
+            callback(base64String);
+        }
+        reader.readAsDataURL(file);
     }
 
-    var mime = getMimeType(dataurl);
-    var blob = new Blob([new Uint8Array(byteArr)], { type: mime });
-    return  new File([blob], name+"."+getExtension(dataurl), { type: mime });    
-}
+    //Decode a Base64 string to File
+    static dataUrlToFile(name, dataurl) {
+        let content = atob(this.getBinaryFile(dataurl));
+        let byteArr = new Array(content.length);
 
-//Encode a file to a blob
-function fileToBlob(file){
-    return new Blob([file]);
-}
+        for (let i = 0; i < content.length; i++) {
+            byteArr[i] = content.charCodeAt(i);
+        }
 
-//Get mime type from a base64 string
-function getMimeType(dataurl){
-    return dataurl.match(/:(.*?);/)[1];
-}
+        let mime = this.getMimeType(dataurl);
+        let blob = new Blob([new Uint8Array(byteArr)], { type: mime });
+        return new File([blob], name + "." + this.getExtension(dataurl), { type: mime });
+    }
 
-//Get extension type from a base64 string
-function getExtension(dataurl){
-    return dataurl.match(/\/\w+/i)[0].replace("/","");
-}
+    //Encode a file to a blob
+    static fileToBlob(file) {
+        return new Blob([file]);
+    }
 
-//Get only dataUrl from a base64 string
-function getBinaryFile(dataurl){
-    return dataurl.split(",")[1];
+    //Get mime type from a base64 string
+    static getMimeType(dataurl) {
+        return dataurl.match(/:(.*?);/)[1];
+    }
+
+    //Get extension type from a base64 string
+    static getExtension(dataurl) {
+        return dataurl.match(/\/\w+/i)[0].replace("/", "");
+    }
+
+    //Get only dataUrl from a base64 string
+    static getBinaryFile(dataurl) {
+        return dataurl.split(",")[1];
+    }
 }

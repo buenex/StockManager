@@ -5,7 +5,7 @@ class StorageController{
     }
     static getBySku(storageName,sku){
         let obj = this.getAll(storageName);
-        return obj.find((p) => p.sku === sku);
+        return obj.find((p) => p.sku == sku);
     }
     static getBySkuTerm(storageName,sku){
         let obj = this.getAll(storageName);

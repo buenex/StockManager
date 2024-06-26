@@ -127,7 +127,7 @@ function init(sku) {
     if (toEdit(sku)) {
         var product = StorageController.getBySku(storageName, sku);
         excludeButton.disabled = false;
-        productPreview = product != null ? prod : productPreview;
+        productPreview = product != null ? product : productPreview;
         if (product) {
             skuInput.disabled = true;
             updateInit()

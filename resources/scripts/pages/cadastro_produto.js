@@ -80,7 +80,7 @@ function updateProductView() {
 
 function saveClick() {
     try {
-        if (toEdit) {
+        if (toEdit(skuToEdit)) {
             if (StorageController.update(storageName, productPreview)) {
                 alert("Registro atualizado com sucesso!");
             }

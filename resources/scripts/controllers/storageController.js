@@ -32,8 +32,12 @@ class StorageController{
     static update(storageName,obj){
         let list = this.getAll(storageName);
         let index = list.findIndex((p) => p.sku == obj.sku);
-        list[index] = obj;
-        this.setStorage(storageName,list);
+        if(index){
+            list[index] = obj;
+            this.setStorage(storageName,list);
+            return true;
+        }
+        return false;
     }
     static deleteBySku(storageName,sku){
         let list = this.getAll(storageName);

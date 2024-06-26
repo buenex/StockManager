@@ -14,7 +14,10 @@ class Product{
     static draw(product){
         return `<div class="col" id="${product.sku}">
         <div class="card bg-light" style="width: 18rem;">
-        <div><h5>SKU:${product.sku}</h5></div>
+            <div class="row">
+                <div class="col"><h5>SKU:${product.sku}</h5></div>
+                <div class="col-lg-2"><a onclick=editProduct(${product.sku}) ><i class="bi bi-pencil-square"></i></a></div>
+            </div>
             <img class="w-75 h-75 p-2 rounded mx-auto border-0" src="${product.binary_image}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${product.name}</h5>

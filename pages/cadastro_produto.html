@@ -56,7 +56,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="precoCustoInput" class="form-label">Preco de custo R$</label>
-                        <input type="number" value="0.0" class="form-control" id="precoCustoInput"
+                        <input type="number" value="0.0" class="form-control keyup-field" id="precoCustoInput"
                             placeholder="R$ 10.50">
                     </div>
                     <div class="mb-3">
@@ -65,7 +65,7 @@
                             placeholder="R$ 10.50">
                     </div>
                     <button type="button" class="btn btn-primary" onclick="saveClick()">Salvar</button>
-                    <button type="button" disabled class="btn btn-danger" onclick="saveClick()">Excluir</button>
+                    <button type="button" id="excludeButton" disabled class="btn btn-danger" onclick="excludeClick()">Excluir</button>
                 </div>
                 <div class="col text-left">
                     <h4>Preview do seu produto</h4>

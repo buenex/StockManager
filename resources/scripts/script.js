@@ -12,6 +12,10 @@ function drawProducts(list){
     });
 }
 
+function editProduct(sku){
+    window.location.href =`./pages/cadastro_produto.html?sku=${sku}`;
+}
+
 searchInput.addEventListener('keyup', () => {
     if(searchInput.value == "")
         drawProducts(StorageController.getAll(storageName))

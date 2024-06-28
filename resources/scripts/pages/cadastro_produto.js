@@ -67,7 +67,7 @@ function updateProductView() {
     productPreview.sku = skuInput.value;
     productPreview.name = nomeInput.value;
     productPreview.description = descricaoInput.value;
-    productPreview.quantity = estoqueInput.value;
+    productPreview.quantity = new Number(estoqueInput.value);
     productPreview.coast_price = precoCustoinput.value
     productPreview.sell_price = precoVendaInput.value;
     makeBlobImage();
@@ -147,7 +147,7 @@ function updateInit() {
 
     nomeInput.value = productPreview.name;
     descricaoInput.value = productPreview.description;
-    estoqueInput.value = productPreview.quantity;
+    estoqueInput.value = productPreview.quantity.toString();
     precoVendaInput.value = productPreview.sell_price;
     precoCustoinput.value = productPreview.coast_price;
 }

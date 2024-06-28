@@ -5,20 +5,35 @@ const storageName = 'products';
 
 drawProducts(StorageController.getAll(storageName))
 
-function drawProducts(list){
+function drawProducts(list) {
     listOfProducts.innerHTML = "";
     list.forEach(product => {
         listOfProducts.innerHTML += Product.draw(product);
     });
 }
 
-function editProduct(sku){
-    window.location.href =`./pages/cadastro_produto.html?sku=${sku}`;
+function editProduct(sku) {
+    window.location.href = `./pages/cadastro_produto.html?sku=${sku}`;
 }
 
 searchInput.addEventListener('keyup', () => {
-    if(searchInput.value == "")
+    if (searchInput.value == "")
         drawProducts(StorageController.getAll(storageName))
     else
-        drawProducts(Search.findProducts(storageName,searchInput.value));
+        drawProducts(Search.findProducts(storageName, searchInput.value));
 });
+
+function changeStock(sku, quantity) {
+    try {
+        let product = StorageController.getBySku(storageName, sku);
+        let updatedNumber = new Number(product.quantity) + quantity;
+        
+        if (updatedNumber >= 0) {
+            product.quantity = updatedNumber;
+            StorageController.update(storageName, product);
+            drawProducts(StorageController.getAll(storageName))
+        }
+    } catch (ex) {
+        console.log(ex);
+    }
+}

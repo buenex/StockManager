@@ -19,8 +19,6 @@ var keyupFields = document.querySelectorAll(".keyup-field");
 const url = document.URL;
 const skuToEdit = getParameter(url);
 
-const storageName = 'products';
-
 var productPreview = new Product(0, "nome preview", "descricao de demonstracao", 5, "", "", 0.00, 0.00);
 
 init(skuToEdit);
@@ -51,7 +49,10 @@ function drawpreview() {
     estoquePreviewInput.innerHTML += productPreview.quantity;
     precoVendaPreviewInput.innerHTML += productPreview.sell_price;
 
-    imagePreviewInput.src = productPreview.blob_image;
+    if(!productPreview.binary_image == "")
+        imagePreviewInput.src = productPreview.blob_image;
+    else
+        imagePreviewInput.src = "../resources/images/image.png"
 }
 
 function clearPreview() {
@@ -61,6 +62,15 @@ function clearPreview() {
     estoquePreviewInput.innerHTML = "Estoque: ";
     precoVendaPreviewInput.innerHTML = "R$ ";
     imagePreviewInput.src = "";
+}
+
+function clearFields() {
+    skuInput.value = "";
+    nomeInput.value = "";
+    descricaoInput.value = "";
+    estoqueInput.value = "0";
+    precoCustoinput.value = "0.0";
+    precoVendaInput.value = "0.0";
 }
 
 function updateProductView() {
@@ -90,8 +100,11 @@ function saveClick() {
             if (message != "") {
                 alert(message)
             } else {
-                if (StorageController.save(storageName, productPreview))
+                if (StorageController.save(storageName, productPreview)) {
                     alert("Registro salvo com sucesso!");
+                    clearPreview();
+                    clearFields();
+                }
             }
         }
 
@@ -120,7 +133,7 @@ function getParameter(url) {
 }
 
 function toEdit(sku) {
-    return StorageController.getBySku(storageName,sku);
+    return StorageController.getBySku(storageName, sku);
 }
 
 function init(sku) {

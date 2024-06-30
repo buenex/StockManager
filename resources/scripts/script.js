@@ -1,13 +1,15 @@
 const listOfProducts = document.getElementById('list-of-products');
 const searchInput = document.getElementById('search-input');
 
-const storageName = 'products';
+fixProducts()
 
 drawProducts(StorageController.getAll(storageName))
 
 function drawProducts(list) {
     listOfProducts.innerHTML = "";
     list.forEach(product => {
+        if(product.binary_image == "")
+            product.binary_image = "./resources/images/image.png";
         listOfProducts.innerHTML += Product.draw(product);
     });
 }
@@ -36,4 +38,14 @@ function changeStock(sku, quantity) {
     } catch (ex) {
         console.log(ex);
     }
+}
+
+function fixProducts(){
+    let list = StorageController.getAll(storageName);
+    list.forEach(product => {
+        if(product.binary_image == null){
+            product.binary_image = "";
+            StorageController.update(storageName,product);
+        }
+    });
 }

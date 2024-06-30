@@ -12,13 +12,13 @@ class Product{
     }
 
     static draw(product){
-        return `<div class="col" id="${product.sku}">
-            <div class="card bg-light" style="width: 18rem;">
+        return `<div class="col py-2" id="${product.sku}">
+            <div class="card bg-light h-100" style="width: 18rem;">
                 <div class="row">
                     <div class="col"><h5>SKU:${product.sku}</h5></div>
                     <div class="col-lg-2"><a onclick=editProduct(${product.sku}) ><i class="bi bi-pencil-square"></i></a></div>
                 </div>
-                <img class="w-75 h-75 p-2 rounded mx-auto border-0" src="${product.binary_image}" alt="Card image cap">
+                <img class="w-75 h-auto p-2 rounded mx-auto border-0" src="${product.binary_image}" alt="Card image cap">
                 <div class="card-body">
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text">${product.description}.</p>

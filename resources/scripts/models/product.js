@@ -14,7 +14,7 @@ class Product{
     static draw(product){
         return `<div class="col py-2" id="${product.sku}">
             <div class="card bg-light h-100" style="width: 18rem;">
-                <div class="row">
+                <div class="row row-cols-2">
                     <div class="col"><h5>SKU:${product.sku}</h5></div>
                     <div class="col-lg-2"><a onclick=editProduct(${product.sku}) ><i class="bi bi-pencil-square"></i></a></div>
                 </div>

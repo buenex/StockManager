@@ -1,0 +1,27 @@
+{
+  "name": "io.cordova.stockcontrol",
+  "displayName": "Stock Control",
+  "version": "0.0.1",
+  "description": "A stock control hybrid app",
+  "main": "index.js",
+  "scripts": {
+
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^13.0.0",
+    "cordova-plugin-inappbrowser": "^6.0.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-inappbrowser": {}
+    }
+  }
+}

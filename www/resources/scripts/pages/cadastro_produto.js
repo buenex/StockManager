@@ -25,7 +25,7 @@ var productPreview = new Product(0, "nome preview", "descricao de demonstracao",
 
 document.addEventListener("deviceready", function () {
     init(skuToEdit);
-    drawpreview();
+    drawPreview();
 });
 
 imageInput.addEventListener("change", (event) => {
@@ -35,7 +35,6 @@ imageInput.addEventListener("change", (event) => {
 keyupFields.forEach((key) => {
     key.addEventListener("input", (event) => {
         updateProductView();
-
     })
 });
 

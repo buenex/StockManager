@@ -49,3 +49,9 @@ function fixProducts(){
         }
     });
 }
+
+document.addEventListener("deviceready", function() {
+    var platform = cordova.platformId;
+
+    console.log(`Running at: ${platform}`);
+});

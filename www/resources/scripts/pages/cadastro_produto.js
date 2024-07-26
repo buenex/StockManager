@@ -21,8 +21,11 @@ const skuToEdit = getParameter(url);
 
 var productPreview = new Product(0, "nome preview", "descricao de demonstracao", 5, "", "", 0.00, 0.00);
 
-init(skuToEdit);
-drawpreview();
+
+document.addEventListener("deviceready", function () {
+    init(skuToEdit);
+    drawpreview();
+});
 
 imageInput.addEventListener("change", (event) => {
     updateProductView();
@@ -32,7 +35,7 @@ imageInput.addEventListener("change", (event) => {
 keyupFields.forEach((key) => {
     key.addEventListener("input", (event) => {
         updateProductView();
-        drawpreview();
+
     })
 });
 
@@ -49,7 +52,7 @@ function drawpreview() {
     estoquePreviewInput.innerHTML += productPreview.quantity;
     precoVendaPreviewInput.innerHTML += productPreview.sell_price;
 
-    if(!productPreview.binary_image == "")
+    if (!productPreview.binary_image == "")
         imagePreviewInput.src = productPreview.blob_image;
     else
         imagePreviewInput.src = "../resources/images/image.png"
@@ -91,7 +94,7 @@ function updateProductView() {
 function saveClick() {
     try {
         if (toEdit(skuToEdit)) {
-            if (StorageController.update(storageName, productPreview)) {
+            if (data.update(storageName, productPreview)) {
                 alert("Registro atualizado com sucesso!");
             }
         }
@@ -100,7 +103,7 @@ function saveClick() {
             if (message != "") {
                 alert(message)
             } else {
-                if (StorageController.save(storageName, productPreview)) {
+                if (data.save(storageName, productPreview)) {
                     alert("Registro salvo com sucesso!");
                     clearPreview();
                     clearFields();
@@ -115,7 +118,7 @@ function saveClick() {
 
 function validations() {
     let message = "";
-    message += checkIfVoid(skuInput.value) ? "Sku deve ser preenchido! \n" : StorageController.getBySku(storageName, productPreview.sku) ? "Sku ja existente para outro produto! \n" : "";
+    message += checkIfVoid(skuInput.value) ? "Sku deve ser preenchido! \n" : data.getBySku(storageName, productPreview.sku) ? "Sku ja existente para outro produto! \n" : "";
     message += checkIfVoid(nomeInput.value) ? "Nome deve ser preenchido! \n" : "";
     message += checkIfVoid(descricaoInput.value) ? "Descricao deve ser preenchido! \n" : "";
     message += checkIfVoid(precoVendaInput.value) ? "Preco de venda deve ser preenchido! \n" : "";
@@ -133,12 +136,12 @@ function getParameter(url) {
 }
 
 function toEdit(sku) {
-    return StorageController.getBySku(storageName, sku);
+    return data.getBySku(storageName, sku);
 }
 
 function init(sku) {
     if (toEdit(sku)) {
-        var product = StorageController.getBySku(storageName, sku);
+        var product = data.getBySku(storageName, sku);
         excludeButton.disabled = false;
         productPreview = product != null ? product : productPreview;
         if (product) {
@@ -166,7 +169,7 @@ function updateInit() {
 }
 function excludeClick() {
     if (confirm(`Tem certeza que quer excluir o registro de sku: ${skuToEdit} ?`)) {
-        StorageController.deleteBySku(storageName, skuToEdit);
+        data.deleteBySku(storageName, skuToEdit);
         let goTo = url.split("?")[0]
         alert("Registro excluido com sucesso!")
         window.location.href = goTo;

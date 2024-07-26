@@ -26,13 +26,11 @@ drawpreview();
 
 imageInput.addEventListener("change", (event) => {
     updateProductView();
-    drawpreview();
 });
 
 keyupFields.forEach((key) => {
     key.addEventListener("input", (event) => {
         updateProductView();
-        drawpreview();
     })
 });
 
@@ -84,6 +82,7 @@ function updateProductView() {
     if (imageInput.files.length > 0) {
         Utils.fileToDataUrl(imageInput.files[0], function (imageBinary) {
             productPreview.binary_image = imageBinary;
+            drawpreview();
         })
     }
 }

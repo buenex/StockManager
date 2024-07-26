@@ -22,7 +22,7 @@ const skuToEdit = getParameter(url);
 var productPreview = new Product(0, "nome preview", "descricao de demonstracao", 5, "", "", 0.00, 0.00);
 
 init(skuToEdit);
-drawpreview();
+drawPreview();
 
 imageInput.addEventListener("change", (event) => {
     updateProductView();
@@ -38,7 +38,7 @@ function makeBlobImage() {
     productPreview.blob_image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : "";
 }
 
-function drawpreview() {
+function drawPreview() {
     clearPreview()
 
     skuPreviewInput.innerHTML += productPreview.sku;
@@ -82,7 +82,7 @@ function updateProductView() {
     if (imageInput.files.length > 0) {
         Utils.fileToDataUrl(imageInput.files[0], function (imageBinary) {
             productPreview.binary_image = imageBinary;
-            drawpreview();
+            drawPreview();
         })
     }
 }

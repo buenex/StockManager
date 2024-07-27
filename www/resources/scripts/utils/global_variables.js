@@ -15,10 +15,10 @@ function getDataByPlatform(platform){
         case "browser":
             return StorageController;
         case "android":
-            //do sth
+            return StorageController;
         case "ios":
             //do sth
         default:
-            //do sth
+            return StorageController;
     }
 }

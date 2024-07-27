@@ -35,6 +35,7 @@ imageInput.addEventListener("change", (event) => {
 keyupFields.forEach((key) => {
     key.addEventListener("input", (event) => {
         updateProductView();
+        drawPreview();
     })
 });
 
@@ -47,7 +48,7 @@ function drawPreview() {
 
     skuPreviewInput.innerHTML += productPreview.sku;
     nomePreviewInput.innerHTML += productPreview.name;
-    descricaoPreviewInput.innerHTML += productPreview.description;
+    descricaoPreviewInput.innerHTML += productPreview.description;    
     estoquePreviewInput.innerHTML += productPreview.quantity;
     precoVendaPreviewInput.innerHTML += productPreview.sell_price;
 
